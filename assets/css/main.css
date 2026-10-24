@@ -8666,3 +8666,62 @@ input, select, textarea {
 	}
 
 	input[type="submit"] { color: #ffffff !important; }
+
+/* ===== Cambios: popup, botón de entradas, Programa y galería ===== */
+
+	/* Programa: fondo hueso en lugar de blanco */
+	#wrapper > #programa { background-color: #ece3cd; }
+	#wrapper > #programa .items.style1 > section { background: #f8f4e9; }
+
+	/* Botón "Conseguir Entradas Gratis": relleno dorado para diferenciarlo */
+	.button.btn-entradas {
+		background-color: #e0b64a;
+		box-shadow: none;
+		color: #0a2a43 !important;
+		font-weight: 600;
+		max-width: none;
+		overflow: visible;
+	}
+	.button.btn-entradas:hover { background-color: #ecc86a; box-shadow: none; color: #0a2a43 !important; }
+	.button.btn-entradas:active { background-color: #c99f35; box-shadow: none; color: #0a2a43 !important; }
+	.button.btn-entradas .icon:before { margin-right: 0.4rem; }
+
+	/* Popup */
+	.popup {
+		position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+		z-index: 20000;
+		display: flex; align-items: center; justify-content: center;
+		padding: 1.5rem;
+		background: rgba(10, 42, 67, 0.7);
+		-webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+		opacity: 0; visibility: hidden;
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+	}
+	.popup.visible { opacity: 1; visibility: visible; }
+	.popup-box {
+		background: #fbf8f1;
+		border-top: 4px solid #e0b64a;
+		border-radius: 0.75rem;
+		box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+		max-width: 26rem; width: 100%;
+		padding: 2.5rem 2rem 2rem 2rem;
+		text-align: center;
+		transform: translateY(1rem) scale(0.97);
+		transition: transform 0.3s ease;
+	}
+	.popup.visible .popup-box { transform: none; }
+	.popup-box .icon.major { display: block; margin: 0 0 1rem 0; font-size: 2.25rem; color: #b88a1e; }
+	.popup-box h3 { color: #0a2a43; margin: 0 0 0.75rem 0; }
+	.popup-box p { margin: 0 0 1.75rem 0; color: #12263a; }
+
+	/* FOTO PENDIENTE: marcas de fotos por colocar en la galería.
+	   QUITAR este bloque (y los <span class="foto-pendiente"> del HTML) cuando estén las fotos finales. */
+	.foto-pendiente {
+		position: absolute; top: 0.75rem; left: 0.75rem; z-index: 3;
+		background: #e0b64a; color: #0a2a43;
+		font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+		line-height: 1.3; padding: 0.5rem 0.75rem; border-radius: 0.4rem;
+		box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
+		pointer-events: none; text-align: left;
+	}
+	.foto-pendiente small { display: block; margin-top: 0.15rem; font-size: 0.65rem; font-weight: 400; letter-spacing: 0.03em; text-transform: none; }
