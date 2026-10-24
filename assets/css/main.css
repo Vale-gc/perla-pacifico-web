@@ -2216,7 +2216,7 @@ input, select, textarea {
 		input[type="button"].primary,
 		button.primary,
 		.button.primary {
-			background-color: #000000;
+			background-color: rgba(10, 42, 67, 0.92);
 			box-shadow: none;
 			color: #ffffff !important;
 		}
@@ -8631,7 +8631,7 @@ input, select, textarea {
 	.spotlight .content li { margin-bottom: 0.5rem; }
 
 	.button, input[type="submit"] { border-radius: 2rem; letter-spacing: 0.1em; }
-	input[type="submit"], .button.primary { background-color: #0b6e8f; }
+	input[type="submit"] { background-color: #0b6e8f; }
 	input[type="submit"]:hover { background-color: #07506a; }
 
 	.items.style1 > section {
