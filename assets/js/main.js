@@ -339,3 +339,59 @@
 						});
 
 })(jQuery);
+
+// Popups (contacto y entradas).
+(function($) {
+
+	var $popup = $('#popup'),
+		$icono = $('#popup-icono'),
+		$titulo = $('#popup-titulo'),
+		$texto = $('#popup-texto'),
+		$cerrar = $('#popup-cerrar'),
+		$ultimoFoco = null;
+
+	if (!$popup.length)
+		return;
+
+	function abrir(icono, titulo, texto) {
+		$ultimoFoco = $(document.activeElement);
+		$icono.attr('class', 'popup-icon icon solid major ' + icono);
+		$titulo.text(titulo);
+		$texto.text(texto);
+		$popup.addClass('visible').attr('aria-hidden', 'false');
+		$cerrar.focus();
+	}
+
+	function cerrar() {
+		$popup.removeClass('visible').attr('aria-hidden', 'true');
+		if ($ultimoFoco && $ultimoFoco.length)
+			$ultimoFoco.focus();
+	}
+
+	// Botón "Conseguir Entradas Gratis".
+		$('#btn-entradas').on('click', function(event) {
+			event.preventDefault();
+			abrir('fa-ticket-alt', 'Aún no disponibles', 'Las entradas gratuitas todavía no están disponibles. ¡Vuelve pronto!');
+		});
+
+	// Formulario de contacto.
+		$('#form-contacto').on('submit', function(event) {
+			event.preventDefault();
+			abrir('fa-envelope', 'Te enviaremos un mensaje', 'Gracias por escribirnos. Pronto nos pondremos en contacto contigo.');
+			this.reset();
+		});
+
+	// Cerrar: botón, clic fuera del cuadro o tecla Esc.
+		$cerrar.on('click', cerrar);
+
+		$popup.on('click', function(event) {
+			if (event.target === this)
+				cerrar();
+		});
+
+		$(document).on('keydown', function(event) {
+			if (event.keyCode == 27 && $popup.hasClass('visible'))
+				cerrar();
+		});
+
+})(jQuery);
